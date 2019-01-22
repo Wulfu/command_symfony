@@ -95,13 +95,20 @@ class GenerateReportCommand extends Command
             ];
         }
 
+        $headers = [
+            'log_id',
+            'created_at',
+            'answer text'
+        ];
+
         $output->writeln("Exporting to xlsx");
 
         $spreadSheet = new Spreadsheet();
         $sheet = $spreadSheet->getActiveSheet();
 
         $sheet->setCellValue('A1', $question->getTitle());
-        $sheet->fromArray($data, null, 'A2');
+        $sheet->fromArray($headers, null, 'A2');
+        $sheet->fromArray($data, null, 'A3');
         $sheet->setTitle("question_report");
 
         $writer = new Xlsx($spreadSheet);
