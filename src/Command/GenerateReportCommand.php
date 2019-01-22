@@ -107,7 +107,7 @@ class GenerateReportCommand extends Command
         $writer = new Xlsx($spreadSheet);
 
         $date = (new \DateTime())->format("Y_m_d");
-        $excelFilePath = "{$publicDirectory}/question_{$id}_report_{$date}";
+        $excelFilePath = "{$publicDirectory}/question_{$id}_report_{$date}.xlsx";
 
         $output->writeln("Saving file to public directory");
 
